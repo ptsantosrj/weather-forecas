@@ -64,6 +64,7 @@ function displayWeather(data) {
     const weatherIcon = document.getElementById('weather-icon');
     const dateElement = document.getElementById('date');
     const weekdayElement = document.getElementById('weekday');
+    const dateWeekdayElement = document.getElementById('date-weekday');
     const viewDetails = document.getElementById('view-details');
     const addToFavorites = document.getElementById('add-to-favorites');
     const extendedForecast = document.getElementById('extended-forecast');
@@ -89,8 +90,7 @@ function displayWeather(data) {
     const formattedWeekday = now.toLocaleDateString('pt-BR', optionsWeekday);
 
     // Atualiza a data e o dia da semana
-    dateElement.textContent = `${formattedDate}`;
-    weekdayElement.textContent = `${formattedWeekday}`;
+    dateWeekdayElement.textContent = `${formattedWeekday.charAt(0).toUpperCase() + formattedWeekday.slice(1)} - ${formattedDate}`;
 
     weatherInfo.classList.remove('hidden');
     extendedForecast.classList.add('hidden');
@@ -129,8 +129,8 @@ function displayWeather(data) {
 
                 return `
                     <div class="forecast-day">
+                        <p>${formattedWeekday.charAt(0).toUpperCase() + formattedWeekday.slice(1)}</p> 
                         <p>${formattedDate}</p>
-                        <p>${formattedWeekday}</p> 
                         <p>Temperatura: ${day.main.temp}°C</p>
                         <p>Condição: ${day.weather[0].description}</p>
                         <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}.png" alt="Ícone do tempo">

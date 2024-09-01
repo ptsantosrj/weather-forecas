@@ -80,6 +80,17 @@ button:hover {
     height: 60px;
 }
 
+.date-weekday {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.date-weekday p {
+    margin: 0;
+}
+
 .actions {
     display: flex;
     justify-content: center;
