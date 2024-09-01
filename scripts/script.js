@@ -57,7 +57,8 @@ async function getWeatherByCoordinates(lat, lon) {
 
 function displayWeather(data) {
     const weatherInfo = document.getElementById('weather-info');
-    const cityName = document.getElementById('city-name');
+    const cityNameText = document.getElementById('city-name-text');
+    const countryFlag = document.getElementById('country-flag');
     const temperature = document.getElementById('temperature');
     const description = document.getElementById('description');
     const weatherIcon = document.getElementById('weather-icon');
@@ -66,7 +67,14 @@ function displayWeather(data) {
     const extendedForecast = document.getElementById('extended-forecast');
     const forecastDetails = document.getElementById('forecast-details');
 
-    cityName.textContent = `${data.name}, ${data.sys.country}`;
+    // Atualiza o nome da cidade e o código do país
+    cityNameText.textContent = `${data.name}`;
+
+    // Adiciona a bandeira do país
+    const countryCode = data.sys.country.toLowerCase(); // Código do país em minúsculas
+    countryFlag.innerHTML = `<img src="https://flagcdn.com/w20/${countryCode}.png" alt="Bandeira do país">`;
+
+    // Atualiza as informações do clima
     temperature.textContent = `Temperatura: ${data.main.temp}°C`;
     description.textContent = `Condição: ${data.weather[0].description}`;
     weatherIcon.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
