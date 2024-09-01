@@ -8,26 +8,33 @@
 </head>
 <body>
     <div class="container">
-        <h1>Previsão do Tempo Atual Da Sua Cidade</h1>
-        <form id="weather-form">
-            <input type="text" id="city" placeholder="Digite o nome da cidade">
-            <button type="submit">Buscar</button>
-        </form>
-        <div id="weather-info" class="hidden">
+        <header>
+            <h1>Previsão do Tempo</h1>
+            <form id="weather-form">
+                <input type="text" id="city" placeholder="Digite o nome da cidade">
+                <button type="submit">Buscar</button>
+            </form>
+        </header>
+        <section id="weather-info" class="hidden">
             <h2 id="city-name"></h2>
-            <p id="temperature"></p>
-            <p id="description"></p>
-            <img id="weather-icon" alt="Ícone do tempo">
-            <button id="view-details">Ver Detalhes</button>
-            <button id="add-to-favorites">Adicionar aos Favoritos</button>
-        </div>
-        <div id="extended-forecast" class="hidden">
-            <h2>Previsão Estendida</h2>
-            <div id="forecast-details"></div>
-        </div>
-        <nav>
-            <a href="favorites.html">Favoritos</a>
-        </nav>
+            <div class="weather-details">
+                <p id="temperature"></p>
+                <p id="description"></p>
+                <img id="weather-icon" alt="Ícone do tempo">
+            </div>
+            <div class="actions">
+                <button id="view-details">Ver Detalhes</button>
+                <button id="add-to-favorites">Adicionar aos Favoritos</button>
+            </div>
+        </section>
+        <section id="extended-forecast" class="hidden">
+            <div id="forecast-details" class="forecast-container"></div>
+        </section>
+        <footer>
+            <nav>
+                <a href="favorites.html">Favoritos</a>
+            </nav>
+        </footer>
     </div>
     <script src="scripts/script.js"></script>
 </body>

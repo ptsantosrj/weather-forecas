@@ -1,6 +1,13 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f8ff;
+    font-family: 'Arial', sans-serif;
+    background-color: #e0f7fa;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,70 +16,109 @@ body {
 }
 
 .container {
-    text-align: center;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px;
     padding: 20px;
-    width: 300px;
+    text-align: center;
 }
 
-form {
+header {
     margin-bottom: 20px;
 }
 
+h1 {
+    font-size: 2rem;
+    color: #00796b;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
 input[type="text"] {
-    width: 80%;
-    padding: 8px;
-    margin-right: 10px;
+    width: 70%;
+    padding: 10px;
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 5px;
+    font-size: 1rem;
 }
 
 button {
-    padding: 8px 16px;
+    padding: 10px 20px;
     border: none;
-    border-radius: 4px;
-    background-color: #007bff;
+    border-radius: 5px;
+    background-color: #00796b;
     color: #fff;
+    font-size: 1rem;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #004d40;
 }
 
-#weather-info, #extended-forecast {
+#weather-info {
     margin-top: 20px;
 }
 
-.hidden {
-    display: none;
+.weather-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px 0;
 }
 
-#weather-icon {
-    width: 50px;
-    height: 50px;
+.weather-details img {
+    width: 60px;
+    height: 60px;
 }
 
-#forecast-details {
-    margin-top: 20px;
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
-#forecast-details div {
+#extended-forecast {
+    margin-top: 30px;
+}
+
+.forecast-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.forecast-day {
+    background: #e0f2f1;
+    padding: 15px;
+    border-radius: 5px;
+    width: 45%;
     margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-nav {
+.forecast-day p {
+    margin-bottom: 10px;
+}
+
+footer {
     margin-top: 20px;
 }
 
-nav a {
-    margin: 0 10px;
+footer nav a {
+    color: #00796b;
     text-decoration: none;
-    color: #007bff;
+    font-weight: bold;
 }
 
-nav a:hover {
+footer nav a:hover {
     text-decoration: underline;
 }

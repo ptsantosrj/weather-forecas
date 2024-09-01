@@ -41,16 +41,15 @@ async function getWeatherByCity(city) {
 
 async function getWeatherByCoordinates(lat, lon) {
     try {
-        // Usar a API de Geocodificação Reversa para obter a cidade a partir das coordenadas
-        const reverseGeocodeResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=pt_br`);
-        const reverseGeocodeData = await reverseGeocodeResponse.json();
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=pt_br`);
+        const data = await response.json();
 
-        if (reverseGeocodeData.cod === '404') {
+        if (data.cod === '404') {
             alert('Localização não encontrada.');
             return;
         }
 
-        displayWeather(reverseGeocodeData);
+        displayWeather(data);
     } catch (error) {
         alert('Erro ao buscar dados. Tente novamente.');
     }
@@ -85,8 +84,22 @@ function displayWeather(data) {
                 return;
             }
 
-            forecastDetails.innerHTML = forecastData.list.map(day => `
-                <div>
+            // Obtendo a data atual e filtrando previsões duplicadas por dia
+            const today = new Date().toLocaleDateString();
+            const dailyForecasts = {};
+            forecastData.list.forEach(item => {
+                const forecastDate = new Date(item.dt * 1000).toLocaleDateString();
+                if (forecastDate !== today && !dailyForecasts[forecastDate]) {
+                    dailyForecasts[forecastDate] = item;
+                }
+            });
+
+            // Obtendo as previsões para os próximos 5 dias
+            const next5DaysForecasts = Object.values(dailyForecasts).slice(0, 5);
+
+            // Exibindo as previsões na interface
+            forecastDetails.innerHTML = next5DaysForecasts.map(day => `
+                <div class="forecast-day">
                     <p>Data: ${new Date(day.dt * 1000).toLocaleDateString()}</p>
                     <p>Temperatura: ${day.main.temp}°C</p>
                     <p>Condição: ${day.weather[0].description}</p>
