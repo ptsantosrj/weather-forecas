@@ -16,14 +16,20 @@
             </form>
         </header>
         <section id="weather-info" class="hidden">
-            <h2 id="city-name">
-                <span id="city-name-text"></span>
-                <span id="country-flag"></span>
-            </h2>
-            <div class="weather-details">
-                <p id="temperature"></p>
-                <p id="description"></p>
-                <img id="weather-icon" alt="Ícone do tempo">
+            <div class="current-weather">
+                <h2 id="city-name">
+                    <span id="city-name-text"></span>
+                    <span id="country-flag"></span>
+                </h2>
+                <p id="date"></p>
+                <p id="weekday"></p>
+                <div class="weather-details">
+                    <img id="weather-icon" alt="Ícone do tempo">
+                    <div class="weather-text">
+                        <p id="temperature"></p>
+                        <p id="description"></p>
+                    </div>
+                </div>
             </div>
             <div class="actions">
                 <button id="view-details">Ver Detalhes</button>

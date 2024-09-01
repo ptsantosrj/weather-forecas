@@ -62,6 +62,8 @@ function displayWeather(data) {
     const temperature = document.getElementById('temperature');
     const description = document.getElementById('description');
     const weatherIcon = document.getElementById('weather-icon');
+    const dateElement = document.getElementById('date');
+    const weekdayElement = document.getElementById('weekday');
     const viewDetails = document.getElementById('view-details');
     const addToFavorites = document.getElementById('add-to-favorites');
     const extendedForecast = document.getElementById('extended-forecast');
@@ -78,6 +80,17 @@ function displayWeather(data) {
     temperature.textContent = `Temperatura: ${data.main.temp}°C`;
     description.textContent = `Condição: ${data.weather[0].description}`;
     weatherIcon.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+
+    // Obtém a data atual e o dia da semana
+    const now = new Date();
+    const optionsDate = { year: 'numeric', month: 'numeric', day: 'numeric' };
+    const optionsWeekday = { weekday: 'long' };
+    const formattedDate = now.toLocaleDateString('pt-BR', optionsDate);
+    const formattedWeekday = now.toLocaleDateString('pt-BR', optionsWeekday);
+
+    // Atualiza a data e o dia da semana
+    dateElement.textContent = `${formattedDate}`;
+    weekdayElement.textContent = `${formattedWeekday}`;
 
     weatherInfo.classList.remove('hidden');
     extendedForecast.classList.add('hidden');
@@ -106,14 +119,24 @@ function displayWeather(data) {
             const next5DaysForecasts = Object.values(dailyForecasts).slice(0, 5);
 
             // Exibindo as previsões na interface
-            forecastDetails.innerHTML = next5DaysForecasts.map(day => `
-                <div class="forecast-day">
-                    <p>Data: ${new Date(day.dt * 1000).toLocaleDateString()}</p>
-                    <p>Temperatura: ${day.main.temp}°C</p>
-                    <p>Condição: ${day.weather[0].description}</p>
-                    <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}.png" alt="Ícone do tempo">
-                </div>
-            `).join('');
+            forecastDetails.innerHTML = next5DaysForecasts.map(day => {
+                //Obtendo a data e dia da semana, e separando.
+                const date = new Date(day.dt * 1000);
+                const optionsDate = { year: 'numeric', month: 'numeric', day: 'numeric' };
+                const optionsWeekday = { weekday: 'long' };
+                const formattedDate = date.toLocaleDateString('pt-BR', optionsDate);
+                const formattedWeekday = date.toLocaleDateString('pt-BR', optionsWeekday);
+
+                return `
+                    <div class="forecast-day">
+                        <p>${formattedDate}</p>
+                        <p>${formattedWeekday}</p> 
+                        <p>Temperatura: ${day.main.temp}°C</p>
+                        <p>Condição: ${day.weather[0].description}</p>
+                        <img src="http://openweathermap.org/img/wn/${day.weather[0].icon}.png" alt="Ícone do tempo">
+                    </div>
+                `;
+            }).join('');
 
             extendedForecast.classList.remove('hidden');
         } catch (error) {

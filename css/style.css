@@ -7,7 +7,7 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #e0f7fa;
+    background-color: #2c4649;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,7 +16,7 @@ body {
 }
 
 .container {
-    background: #ffffff;
+    background: #0f5161;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     width: 90%;
@@ -97,7 +97,7 @@ button:hover {
 }
 
 .forecast-day {
-    background: #e0f2f1;
+    background: #3a5a58;
     padding: 15px;
     border-radius: 5px;
     width: 45%;
