@@ -1,4 +1,4 @@
-const apiKey = 'cf937c808db51da10b24037b892f5b94'; // Substitua pela sua chave API do OpenWeatherMap
+const apiKey = 'cf937c808db51da10b24037b892f5b94'; // API do OpenWeatherMap
 
 document.addEventListener('DOMContentLoaded', () => {
     if (navigator.geolocation) {
@@ -62,8 +62,6 @@ function displayWeather(data) {
     const temperature = document.getElementById('temperature');
     const description = document.getElementById('description');
     const weatherIcon = document.getElementById('weather-icon');
-    const dateElement = document.getElementById('date');
-    const weekdayElement = document.getElementById('weekday');
     const dateWeekdayElement = document.getElementById('date-weekday');
     const viewDetails = document.getElementById('view-details');
     const addToFavorites = document.getElementById('add-to-favorites');
